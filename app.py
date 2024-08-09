@@ -18,7 +18,7 @@ html_template = '''
     <title>Generative AI</title>
 </head>
 <body>
-    <h1>Generative AI Text Generation V:2.0</h1>
+    <h1>Generative AI Text Generation V:-2.0</h1>
     <form action="/generate" method="post">
         <label for="prompt">Enter your prompt:</label><br>
         <input type="text" id="prompt" name="prompt"><br><br>
