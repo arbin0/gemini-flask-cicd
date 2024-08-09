@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gemini-ai-app
+  labels:
+    app: gemini-ai-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gemini-ai-app
+  template:
+    metadata:
+      labels:
+        app: gemini-ai-app
+    spec:
+      containers:
+      - name: gemini-ai-app
+        image: gcr.io/c0893970-arbin-ica/gemini-ai-app
+        ports:
+        - containerPort: 5000
+        env:
+        - name: API_KEY
+          value: "AIzaSyB5DBEa8wUTq_0ANQiDtncxPcEMPf-gZu4"  # Replace with your actual API key or use a Kubernetes secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gemini-ai-app-service
+spec:
+  selector:
+    app: gemini-ai-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: LoadBalancer
